@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { 
-  Sparkles, 
-  CheckCircle, 
-  XCircle, 
-  HelpCircle, 
-  ArrowRight, 
-  RefreshCw, 
-  BookOpen, 
-  AlertOctagon, 
+import {
+  Sparkles,
+  CheckCircle,
+  XCircle,
+  HelpCircle,
+  ArrowRight,
+  RefreshCw,
+  BookOpen,
+  AlertOctagon,
   Award,
   ChevronRight
 } from 'lucide-react';
-import { mockQuizQuestions } from '../mockData';
+import { mockQuizQuestions } from '../../frontend/src/mockData';
 
 export function AdaptiveQuiz({ onOpenCitation }) {
   const [currentIdx, setCurrentIdx] = useState(0);

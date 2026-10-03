@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Cpu, 
-  CheckCircle2, 
-  Clock, 
-  Layers, 
-  Zap, 
-  RefreshCw, 
-  Play, 
-  Pause, 
-  ChevronRight, 
-  Terminal, 
-  FileText, 
-  Video, 
-  Presentation, 
+import {
+  Cpu,
+  CheckCircle2,
+  Clock,
+  Layers,
+  Zap,
+  RefreshCw,
+  Play,
+  Pause,
+  ChevronRight,
+  Terminal,
+  FileText,
+  Video,
+  Presentation,
   Database,
   ArrowRight,
   Sparkles,
   ShieldCheck,
   Code
 } from 'lucide-react';
-import { mockGeneratingPipeline } from '../mockData';
+import { mockGeneratingPipeline } from '../../frontend/src/mockData';
 
 export function GeneratingScreen({ onNavigateToTutor, onNavigateToQuiz }) {
   const [pipeline, setPipeline] = useState(mockGeneratingPipeline);
@@ -35,14 +35,14 @@ export function GeneratingScreen({ onNavigateToTutor, onNavigateToQuiz }) {
 
     const interval = setInterval(() => {
       setTokensCount(prev => prev + Math.floor(Math.random() * 14) + 6);
-      
+
       // Occasionally add a new log line
       if (Math.random() > 0.65) {
         const sampleLogs = [
-          `[00:${Math.floor(Math.random()*40 + 25)}.8] Reranker validation: cross-encoder similarity score = 0.942`,
-          `[00:${Math.floor(Math.random()*40 + 25)}.2] Source Grounding check: [Silberschatz p.245] mapped to diagnostic question`,
-          `[00:${Math.floor(Math.random()*40 + 25)}.9] Prerequisite validation: verified acyclic concept graph`,
-          `[00:${Math.floor(Math.random()*40 + 25)}.4] Token stream active: synthesizing explanation rationale...`
+          `[00:${Math.floor(Math.random() * 40 + 25)}.8] Reranker validation: cross-encoder similarity score = 0.942`,
+          `[00:${Math.floor(Math.random() * 40 + 25)}.2] Source Grounding check: [Silberschatz p.245] mapped to diagnostic question`,
+          `[00:${Math.floor(Math.random() * 40 + 25)}.9] Prerequisite validation: verified acyclic concept graph`,
+          `[00:${Math.floor(Math.random() * 40 + 25)}.4] Token stream active: synthesizing explanation rationale...`
         ];
         const nextLog = sampleLogs[Math.floor(Math.random() * sampleLogs.length)];
         setLiveLogs(prev => [...prev.slice(-12), nextLog]);
@@ -117,7 +117,7 @@ export function GeneratingScreen({ onNavigateToTutor, onNavigateToQuiz }) {
           </div>
 
           <div className="generating-actions">
-            <button 
+            <button
               id="btn-pause-simulation"
               className="btn btn-secondary btn-sm"
               onClick={() => setIsPaused(!isPaused)}
@@ -127,7 +127,7 @@ export function GeneratingScreen({ onNavigateToTutor, onNavigateToQuiz }) {
             </button>
 
             {pipeline.status !== 'completed' ? (
-              <button 
+              <button
                 id="btn-fast-forward"
                 className="btn btn-primary btn-sm"
                 onClick={handleSimulateFinish}
@@ -136,7 +136,7 @@ export function GeneratingScreen({ onNavigateToTutor, onNavigateToQuiz }) {
                 Instant Complete
               </button>
             ) : (
-              <button 
+              <button
                 id="btn-reset-generation"
                 className="btn btn-secondary btn-sm"
                 onClick={handleResetSimulation}
@@ -150,8 +150,8 @@ export function GeneratingScreen({ onNavigateToTutor, onNavigateToQuiz }) {
 
         {/* Global Progress Track */}
         <div className="overall-progress-track">
-          <div 
-            className="overall-progress-fill" 
+          <div
+            className="overall-progress-fill"
             style={{ width: `${pipeline.progressPercent}%` }}
           ></div>
         </div>
@@ -209,7 +209,7 @@ export function GeneratingScreen({ onNavigateToTutor, onNavigateToQuiz }) {
               const isCompleted = stage.status === 'completed';
 
               return (
-                <div 
+                <div
                   key={stage.id}
                   id={`stage-card-${stage.id}`}
                   className={`stage-item ${isSelected ? 'stage-active' : ''}`}
@@ -233,7 +233,7 @@ export function GeneratingScreen({ onNavigateToTutor, onNavigateToQuiz }) {
                       <span className="stage-items-badge">{stage.duration}</span>
                     </div>
                     <p className="stage-subtext">{stage.subtext}</p>
-                    
+
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                       <span style={{ fontSize: '0.75rem', color: isProcessing ? '#38bdf8' : '#9ca3af', fontFamily: 'monospace' }}>
                         {stage.itemsProcessed}
@@ -265,7 +265,7 @@ export function GeneratingScreen({ onNavigateToTutor, onNavigateToQuiz }) {
 
           {/* Quick CTA to transition to Tutor or Quiz */}
           <div style={{ marginTop: '0.5rem', display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
-            <button 
+            <button
               id="cta-open-grounded-tutor"
               className="btn btn-secondary btn-sm"
               onClick={onNavigateToTutor}
@@ -273,7 +273,7 @@ export function GeneratingScreen({ onNavigateToTutor, onNavigateToQuiz }) {
               Open Grounded Tutor Chat
               <ArrowRight size={14} />
             </button>
-            <button 
+            <button
               id="cta-open-adaptive-quiz"
               className="btn btn-primary btn-sm"
               onClick={onNavigateToQuiz}
@@ -303,8 +303,8 @@ export function GeneratingScreen({ onNavigateToTutor, onNavigateToQuiz }) {
                 === SCHOLARAI MULTIMODAL INGESTION & ASSESSMENT PIPELINE ===
               </div>
               {liveLogs.map((log, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`terminal-line ${index === liveLogs.length - 1 ? 'active' : ''}`}
                 >
                   {log}

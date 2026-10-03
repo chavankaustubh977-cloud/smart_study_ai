@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { 
-  Upload, 
-  FileText, 
-  Presentation, 
-  Video, 
-  CheckCircle2, 
-  Clock, 
-  RefreshCw, 
+import {
+  Upload,
+  FileText,
+  Presentation,
+  Video,
+  CheckCircle2,
+  Clock,
+  RefreshCw,
   FolderPlus,
   Sparkles,
   Layers,
   Database
 } from 'lucide-react';
-import { mockMaterials } from '../mockData';
+import { mockMaterials } from '../../frontend/src/mockData';
 
 export function MaterialsIngestion({ onStartGeneration }) {
   const [materials, setMaterials] = useState(mockMaterials);
@@ -63,7 +63,7 @@ export function MaterialsIngestion({ onStartGeneration }) {
         </p>
 
         <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
-          <button 
+          <button
             id="btn-upload-file-sim"
             className="btn btn-primary"
             onClick={handleSimulateUpload}
@@ -82,7 +82,7 @@ export function MaterialsIngestion({ onStartGeneration }) {
             )}
           </button>
 
-          <button 
+          <button
             id="btn-launch-generating-screen"
             className="btn btn-outline-indigo"
             onClick={onStartGeneration}
@@ -108,7 +108,7 @@ export function MaterialsIngestion({ onStartGeneration }) {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
           {materials.map((mat) => (
-            <div 
+            <div
               key={mat.id}
               style={{
                 display: 'flex',

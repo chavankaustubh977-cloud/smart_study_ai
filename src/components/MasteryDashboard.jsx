@@ -1,16 +1,16 @@
 import React from 'react';
-import { 
-  BarChart3, 
-  Flame, 
-  Award, 
-  AlertCircle, 
-  Calendar, 
-  ArrowUpRight, 
-  TrendingUp, 
-  CheckCircle2, 
-  Target 
+import {
+  BarChart3,
+  Flame,
+  Award,
+  AlertCircle,
+  Calendar,
+  ArrowUpRight,
+  TrendingUp,
+  CheckCircle2,
+  Target
 } from 'lucide-react';
-import { mockLearnerProfile } from '../mockData';
+import { mockLearnerProfile } from '../../frontend/src/mockData';
 
 export function MasteryDashboard({ onTakeTargetedQuiz }) {
   const profile = mockLearnerProfile;
@@ -77,13 +77,13 @@ export function MasteryDashboard({ onTakeTargetedQuiz }) {
               const isNeedsPractice = topic.mastery >= 45 && topic.mastery < 70;
               const isCritical = topic.mastery < 45;
 
-              const fillColor = isMastered 
-                ? 'var(--accent-emerald)' 
-                : isProficient 
-                ? 'var(--accent-cyan)' 
-                : isNeedsPractice 
-                ? 'var(--accent-amber)' 
-                : 'var(--accent-rose)';
+              const fillColor = isMastered
+                ? 'var(--accent-emerald)'
+                : isProficient
+                  ? 'var(--accent-cyan)'
+                  : isNeedsPractice
+                    ? 'var(--accent-amber)'
+                    : 'var(--accent-rose)';
 
               return (
                 <div key={tIdx} className="topic-mastery-item">
@@ -108,8 +108,8 @@ export function MasteryDashboard({ onTakeTargetedQuiz }) {
                   </div>
 
                   <div className="mastery-bar-track">
-                    <div 
-                      className="mastery-bar-fill" 
+                    <div
+                      className="mastery-bar-fill"
                       style={{ width: `${topic.mastery}%`, background: fillColor }}
                     ></div>
                   </div>
@@ -164,7 +164,7 @@ export function MasteryDashboard({ onTakeTargetedQuiz }) {
               {profile.recommendedAction}
             </p>
 
-            <button 
+            <button
               id="btn-targeted-diagnostic"
               className="btn btn-primary"
               style={{ width: '100%' }}

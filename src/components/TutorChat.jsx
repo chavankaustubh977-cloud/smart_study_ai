@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { 
-  Send, 
-  Bot, 
-  User, 
-  FileText, 
-  Presentation, 
-  Video, 
-  AlertTriangle, 
-  ShieldCheck, 
-  Sparkles, 
+import {
+  Send,
+  Bot,
+  User,
+  FileText,
+  Presentation,
+  Video,
+  AlertTriangle,
+  ShieldCheck,
+  Sparkles,
   Info,
-  ExternalLink 
+  ExternalLink
 } from 'lucide-react';
-import { mockTutorChat } from '../mockData';
+import { mockTutorChat } from '../../frontend/src/mockData';
 
 export function TutorChat({ onOpenCitation }) {
   const [messages, setMessages] = useState(mockTutorChat);
@@ -133,8 +133,8 @@ export function TutorChat({ onOpenCitation }) {
         {/* Message Stream */}
         <div className="chat-history">
           {messages.map((msg) => (
-            <div 
-              key={msg.id} 
+            <div
+              key={msg.id}
               className={`chat-msg ${msg.sender} ${msg.isUnsupported ? 'unsupported' : ''}`}
             >
               <div className={`chat-avatar ${msg.sender}`}>
@@ -242,7 +242,7 @@ export function TutorChat({ onOpenCitation }) {
               if (e.key === 'Enter') handleSendMessage();
             }}
           />
-          <button 
+          <button
             id="btn-send-message"
             className="btn btn-primary"
             onClick={() => handleSendMessage()}
